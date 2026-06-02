@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات امتحانی حرفه‌ای | هفتم تا دهم</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--text-light);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(139, 92, 246, 0.9) 100%);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .grades {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .grade-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .grade-badge:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .features-list {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .feature-item i {
+            color: #10b981;
+            font-size: 1.3rem;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--text-light);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .pricing-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+        }
+        
+        .pricing-card.featured {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .grade-label {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 20px 0;
+        }
+        
+        .price span {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .status {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .featured .status {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        /* Discount Banner */
+        .discount-banner {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .discount-banner h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .discount-items {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .discount-item {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .feature-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-card li {
+            padding: 8px 0;
+            color: var(--text-muted);
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .feature-card li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-card);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+        
+        .contact-btn i {
+            font-size: 1.4rem;
+        }
+        
+        .phone-display {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(99, 102, 241, 0.2));
+            border: 2px solid var(--success-color);
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin: 30px auto;
+            display: inline-block;
+        }
+        
+        .phone-display p {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--success-color);
+            direction: ltr;
+            letter-spacing: 2px;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 15px;
+        }
+        
+        .step p {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        .note-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 2px dashed var(--accent-color);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            display: inline-block;
+        }
+        
+        .note-box p {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            z-index: 9999;
+            animation: pulse-whatsapp 2s infinite;
+        }
+        
+        @keyframes pulse-whatsapp {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .contact-section {
+                padding: 40px 20px;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                left: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.7rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🎯 به جای تو امتحان میدم!</h1>
+            <p class="subtitle">خدمات تخصصی امتحان برای دانش‌آموزان</p>
+            
+            <div class="grades">
+                <span class="grade-badge">پایه هفتم</span>
+                <span class="grade-badge">پایه هشتم</span>
+                <span class="grade-badge">پایه نهم</span>
+                <span class="grade-badge">پایه دهم</span>
+            </div>
+            
+            <div class="features-list">
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>امتحان تمام دروس</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>تضمین نمره عالی</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>محرمیت کامل</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>پرداخت پس از اطمینان</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <div class="container">
+        <h2 class="section-title">💰 تعرفه خدمات</h2>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="grade-label">📚 پایه هفتم</div>
+                <div class="price">150,000 <span>تومان</span></div>
+                <div class="status">✅ موجود</div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="grade-label">📗 پایه هشتم</div>
+                <div class="price">180,000 <span>تومان</span></div>
+                <div class="status">✅ موجود</div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="grade-label">📘 پایه نهم</div>
+                <div class="price">200,000 <span>تومان</span></div>
+                <div class="status">✅ موجود</div>
+            </div>
+            
+            <div class="pricing-card featured pulse">
+                <div class="grade-label">📙 پایه دهم</div>
+                <div class="price">250,000 <span>تومان</span></div>
+                <div class="status">⭐ پرفروش‌ترین</div>
+            </div>
+        </div>
+        
+        <div class="discount-banner">
+            <h3>🎁 تخفیف‌های ویژه</h3>
+            <div class="discount-items">
+                <div class="discount-item">🔥 ثبت‌نام دو پایه همزمان: <strong>۱۰٪ تخفیف</strong></div>
+                <div class="discount-item">💰 معرفی هر دانش‌آموز جدید: <strong>۲۰,۰۰۰ تومان کش‌بک</strong></div>
+            </div>
+            <p style="margin-top: 15px; opacity: 0.9;">⚠️ توجه: قیمت‌ها برای کل ترم محاسبه شده است</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container">
+        <h2 class="section-title">⭐ چرا ما را انتخاب کنید؟</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>🔒 محرمیت و اعتماد</h3>
+                <ul>
+                    <li>اطلاعات شما کاملاً محرمانه می‌ماند</li>
+                    <li>هیچ ردی از همکاری باقی نمی‌ماند</li>
+                    <li>تضمین امنیت اطلاعات</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>📚 تخصص در همه دروس</h3>
+                <ul>
+                    <li>ریاضی، علوم، فارسی</li>
+                    <li>انگلیسی، مطالعات اجتماعی</li>
+                    <li>زبان‌های خارجی و دروس تخصصی</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>⏰ زمان‌بندی منظم</h3>
+                <ul>
+                    <li>تحویل به موقع تمام امتحانات</li>
+                    <li>پشتیبانی ۲۴ ساعته</li>
+                    <li>پیگیری مداوم پروسه</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>💯 تضمین کیفیت</h3>
+                <ul>
+                    <li>نمره تضمینی بالای ۱۸</li>
+                    <li>در صورت عدم رضایت، بازپرداخت کامل</li>
+                    <li>ضمانت کتبی خدمات</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="container">
+        <h2 class="section-title">📞 ثبت‌نام و تماس</h2>
+        
+        <div class="contact-section">
+            <h3 style="font-size: 2rem; margin-bottom: 10px;">همین الان ثبت‌نام کن! 🚀</h3>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">راه‌های ارتباطی ما:</p>
+            
+            <!-- Phone Number Display -->
+            <div class="phone-display">
+                <p><i class="fas fa-phone-volume"></i> ۰۹۱۴۵۶۵۶۴۶۲</p>
+            </div>
+            
+            <div class="contact-methods">
+                <!-- Telegram Button -->
+                <a href="https://t.me/09145656462" target="_blank" class="contact-btn" style="background: linear-gradient(135deg, #0088cc, #00aced);">
+                    <i class="fab fa-telegram"></i>
+                    تلگرام
+                </a>
+                
+                <!-- WhatsApp Button -->
+                <a href="https://wa.me/989145656462" target="_blank" class="contact-btn" style="background: linear-gradient(135deg, #25D366, #128C7E);">
+                    <i class="fab fa-whatsapp"></i>
+                    واتساپ
+                </a>
+                
+                <!-- Direct Call Button -->
+                <a href="tel:09145656462" class="contact-btn" style="background: linear-gradient(135deg, #10b981, #059669);">
+                    <i class="fas fa-phone-alt"></i>
+                    تماس مستقیم
+                </a>
+                
+                <!-- SMS Button -->
+                <a href="sms:09145656462" class="contact-btn" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                    <i class="fas fa-sms"></i>
+                    ارسال پیامک
+                </a>
+            </div>
+            
+            <h4 style="margin: 40px 0 25px; font-size: 1.4rem;">📝 مراحل ثبت‌نام:</h4>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">۱</div>
+                    <p>ارسال پیام با ذکر پایه تحصیلی</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">۲</div>
+                    <p>دریافت اطلاعات امتحان</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">۳</div>
+                    <p>پرداخت هزینه</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">۴</div>
+                    <p>تحویل نتیجه! 🎉</p>
+                </div>
+            </div>
+            
+            <div class="note-box">
+                <p>💡 نکته: مشاوره رایگان قبل از ثبت‌نام!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/989145656462" target="_blank" class="whatsapp-float" title="چت در واتساپ">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>© ۱۴۰۳ - تمامی حقوق محفوظ است | طراحی با ❤️</p>
+        <p style="margin-top: 10px; font-size: 0.85rem;">
+            📞 شماره تماس: <strong style="color: var(--success-color);">۰۹۱۴۵۶۵۶۴۶۲</strong>
+        </p>
+    </footer>
+
+</body>
+</html>
